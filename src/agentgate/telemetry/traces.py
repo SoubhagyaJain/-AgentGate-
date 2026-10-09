@@ -3,6 +3,7 @@
 import hashlib
 import json
 import os
+import time
 from pathlib import Path
 from uuid import uuid4
 
@@ -19,13 +20,14 @@ def fingerprint(value: StrictModel | dict | str) -> str:
 class TraceRecorder:
     def __init__(self) -> None:
         self._events: list[ExecutionEvent] = []
+        self._started = time.perf_counter()
 
     @property
     def events(self) -> tuple[ExecutionEvent, ...]:
         return tuple(self._events)
 
     def emit(self, kind: str, **values) -> None:
-        self._events.append(ExecutionEvent(sequence=len(self._events), kind=kind, **values))
+        self._events.append(ExecutionEvent(sequence=len(self._events), kind=kind, elapsed_ms=(time.perf_counter()-self._started)*1000, **values))
 
 
 def save_trace(trajectory: Trajectory, path: Path) -> None:

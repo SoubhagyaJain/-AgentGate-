@@ -50,3 +50,24 @@ Reason: latest Phase 1 specification requires no prior successful issuance.
 Alternatives: return existing receipt as an idempotent success (master plan allowed it).
 Consequences: one execution/state change; later duplicate produces a denial.
 Modules: tools/state.py, tools/refunds.py, tools/registry.py.
+
+## 007 — Adapter retries and runtime limits (2026-10-09)
+Decision: non-streaming urllib, redirects disabled, bounded responses, max two
+transient HTTP retries per turn. Record raw attempts and parsed responses as
+different events. Reject duplicate IDs/truncated completions and batches exceeding
+remaining budget before any call in that batch executes. One final-answer repair
+shares the eight-turn budget. Tool attempts, including invalid ones, consume budget.
+Reason: protect credentials and avoid ambiguous/discarded executions or refund replay.
+Alternatives: retry full agent turns, partial batch execution, unbounded repairs.
+Consequences: infrastructure failures retain prior effects and entire observable trace.
+Modules: llm_client.py, agent.py, schemas.py.
+
+## 008 — Structured grounded response and test labeling (2026-10-09)
+Decision: validate every typed claim against each cited retrieved evidence, then
+render using deterministic templates. Validate eligibility/receipt outcome bindings.
+Injected transports are always labeled test_transport; no live-pass inference.
+Reason: no semantic judge required for Phase 1; completion is not evaluation success.
+Alternatives: unconstrained prose, hidden scripted fallback, scenario scoring now.
+Consequences: later evaluator still checks required tool paths and task expectations.
+Known credential text is redacted in raw responses; Ollama's ignored placeholder is not.
+Modules: answers.py, agent.py, llm_client.py, tests/support.py.

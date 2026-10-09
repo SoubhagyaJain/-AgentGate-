@@ -24,3 +24,12 @@
 - Added boundary/tax/privacy/forgery/duplicate tests; full suite -> 68 passed.
 - Independent expected amounts include 79.19 opened return and 93.00 unshipped cancellation.
 - HTTP/runtime/rendering remain next. Tool checkpoint immediately follows this entry.
+
+## 2026-10-09 — Runtime checkpoint
+- Tools checkpoint: f37c818. Implemented HTTP adapter, bounded agent, strict final
+  answer validation/repair and deterministic rendering; added baseline prompt.
+- Full suite: 105 passed, including a localhost HTTP stub and scripted transport tests.
+- Verified 3-attempt retry cap, no refund replay, sequential calls, limits,
+  unsupported citations, duplicate IDs, secret exclusion and atomic trace roundtrip.
+- Live LLM remains unverified. CLI/build/final documentation remain next.
+- Runtime checkpoint immediately follows this entry.

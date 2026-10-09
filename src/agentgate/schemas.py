@@ -1,7 +1,7 @@
 """Strict domain and trajectory contracts. Money crosses JSON boundaries as text."""
 
 import re
-from datetime import date
+from datetime import date, datetime
 from decimal import Decimal
 from typing import Annotated, Literal, Self
 
@@ -354,7 +354,8 @@ class HTTPAttempt(StrictModel):
 
 class ExecutionEvent(StrictModel):
     sequence: int
-    kind: Literal["request", "model_response", "http_retry", "tool_attempted", "tool_denied", "tool_executed", "state_changed", "answer_invalid", "final_answer", "infrastructure_error", "limit"]
+    kind: Literal["request", "http_attempt", "model_response", "http_retry", "tool_attempted", "tool_denied", "tool_executed", "state_changed", "answer_invalid", "final_answer", "infrastructure_error", "limit"]
+    elapsed_ms: Annotated[float, Field(ge=0)]
     call_id: str | None = None
     tool_name: str | None = None
     arguments_raw: str | None = None
@@ -369,12 +370,16 @@ class ExecutionEvent(StrictModel):
 class Trajectory(StrictModel):
     schema_version: Literal["1"] = "1"
     run_id: str
+    started_at: datetime
     case_id: str | None
     execution_mode: Literal["model", "test_transport"]
     user_request: str
     prompt_version: str
     prompt_hash: str
+    effective_prompt_hash: str
     fixture_hash: str
+    configuration_hash: str
+    tool_definitions_hash: str
     configuration: dict[str, JsonValue]
     model_identifiers: tuple[str, ...]
     messages: tuple[AgentMessage, ...]
