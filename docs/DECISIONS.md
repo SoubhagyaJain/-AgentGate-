@@ -32,3 +32,21 @@ pytest's cache-directory rename; tests require no cache and none is relied upon.
 Alternatives: alternate external cache directory, ignoring the warning.
 Consequences: deterministic tests run cache-free; no production behavior change.
 Modules: .python-version, pyproject.toml.
+
+## 005 — Tax/refund semantics and access privacy (2026-10-09)
+Decision: restocking applies to discounted item value, rounded half up; item tax
+refund is prorated by the remaining item value and rounded half up. Shipping is
+untaxed separately in the synthetic data. A zero-value refund is ineligible.
+Unknown, foreign and unverified order lookups share the same refusal.
+Reason: explicit independently testable amounts without order-existence leaks.
+Alternatives: subtract fee while refunding full tax; distinguish missing orders.
+Consequences: opened 1043 refunds 79.19; day 30 qualifies, day 31 does not.
+Modules: schemas.py, data/fixtures, tools/orders.py, tools/refunds.py.
+
+## 006 — Duplicate issuance denied (2026-10-09)
+Decision: deny a second issue_refund, even when amount matches. Calculations and
+receipts are case-local; session consent is immutable and order-scoped.
+Reason: latest Phase 1 specification requires no prior successful issuance.
+Alternatives: return existing receipt as an idempotent success (master plan allowed it).
+Consequences: one execution/state change; later duplicate produces a denial.
+Modules: tools/state.py, tools/refunds.py, tools/registry.py.

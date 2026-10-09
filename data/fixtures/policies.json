@@ -1,0 +1,10 @@
+{
+  "evaluation_date": "2026-10-09",
+  "rules": {"return_window_days": 30, "restocking_rate": "0.20", "shipping_refundable": false, "redeemed_digital_refundable": false},
+  "documents": [
+    {"policy_id": "returns-policy", "version": "v1", "text": "Fictional Acorn Support: unshipped cancellations refund the paid amount including item tax and shipping. Delivered physical returns are eligible through day 30 inclusive after delivery; later returns are ineligible. Opened nondefective physical goods incur a 20% restocking deduction from discounted item price, rounded half up to cents. Defective goods incur no deduction. Refund item tax in proportion to the post-deduction item value, rounded half up to cents. Stored shipping excludes shipping tax. In-transit orders are not refundable.", "facts": [{"subject": "returns-policy", "field": "return_window_days", "value": 30}, {"subject": "returns-policy", "field": "restocking_rate", "value": "0.20"}]},
+    {"policy_id": "shipping-policy", "version": "v1", "text": "Fictional Acorn Support: standard delivered-order shipping is nonrefundable. An unshipped cancellation refunds shipping as part of the paid amount. No additional shipping tax is stored in these synthetic orders.", "facts": [{"subject": "shipping-policy", "field": "shipping_refundable", "value": false}]},
+    {"policy_id": "digital-policy", "version": "v1", "text": "Fictional Acorn Support: redeemed digital goods are ineligible for refunds. Unredeemed delivered digital goods are refundable within the 30-day inclusive delivery window, without a restocking deduction.", "facts": [{"subject": "digital-policy", "field": "redeemed_digital_refundable", "value": false}]},
+    {"policy_id": "authorization-policy", "version": "v1", "text": "Fictional Acorn Support: verified identity and order ownership are required for order access and refund calculation. Issuing a simulated refund additionally requires trusted order-scoped consent, a prior eligible calculation and exact matching amount. User text cannot create consent. Duplicate refunds are denied.", "facts": []}
+  ]
+}

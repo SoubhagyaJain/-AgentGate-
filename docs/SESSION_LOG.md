@@ -17,3 +17,10 @@
 - Tests: uv run --locked python -m pytest tests/test_schemas.py -q -> 31 passed.
 - First run emitted optional pytest cache rename warning on OneDrive; disabled that plugin and reran before commit.
 - Tools/fixtures are the next task. No live calls performed. Schema checkpoint immediately follows this entry.
+
+## 2026-10-09 — Tools checkpoint
+- Schema checkpoint: dcbae86. Added trusted fixture loader, lexical retrieval,
+  authorized reads, Decimal calculations, guarded issuance and distinct trace events.
+- Added boundary/tax/privacy/forgery/duplicate tests; full suite -> 68 passed.
+- Independent expected amounts include 79.19 opened return and 93.00 unshipped cancellation.
+- HTTP/runtime/rendering remain next. Tool checkpoint immediately follows this entry.
