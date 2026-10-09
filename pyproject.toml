@@ -15,7 +15,7 @@ dev = ["pytest>=8.3,<10"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = "-ra"
+addopts = "-ra -p no:cacheprovider"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/agentgate"]
