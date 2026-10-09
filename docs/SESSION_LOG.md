@@ -33,3 +33,16 @@
   unsupported citations, duplicate IDs, secret exclusion and atomic trace roundtrip.
 - Live LLM remains unverified. CLI/build/final documentation remain next.
 - Runtime checkpoint immediately follows this entry.
+
+## 2026-10-09 — Phase 1 completion verification
+- Runtime checkpoint: 1870cf8. Added safe single-request CLI and no-network
+  validation, denied-access matrix, forged-context and additional protocol tests.
+- Full suite: uv run --locked python -m pytest -q -> 124 passed in 1.04s, no warnings.
+- CLI --validate-only succeeded without model contact. uv build produced sdist and wheel.
+- Isolated wheel install/import succeeded via uv run --isolated --no-project --with dist wheel,
+  importing from uv cache site-packages (not editable source).
+- OneDrive artifact verification: focused trace roundtrip with --basetemp
+  reports/phase1-filesystem-verification -> 1 passed. Artifact is test_transport,
+  ignored by Git and not a live evaluation.
+- Updated README/ARCHITECTURE and all continuity documents. No known Phase 1 failures.
+- No real LLM/GPU checks; Phases 2–7 remain unauthorized. Final checkpoint follows.

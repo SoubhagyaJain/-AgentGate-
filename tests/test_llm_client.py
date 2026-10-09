@@ -63,6 +63,21 @@ def test_missing_usage_unknown_provider_metadata_and_redaction():
     assert "[REDACTED]" in result.attempts[0].raw_response
 
 
+def test_escaped_secret_redaction():
+    key = 'PRIVATE_QUOTED_"SECRET'
+    config = AgentConfig(api_key=SecretStr(key))
+    response = completion({"outcome":"authorization_required","claims":[]}, extras={"echo":key})
+    result = LLMClient(config, ScriptedTransport([response])).complete({})
+    assert "PRIVATE_QUOTED" not in result.attempts[0].raw_response
+
+
+def test_malformed_tool_arguments_wire_type_is_protocol_error():
+    raw = '{"model":"m","choices":[{"index":0,"message":{"role":"assistant","tool_calls":[{"id":"x","type":"function","function":{"name":"get_order","arguments":{"order_id":"1042"}}}]}}]}'
+    with pytest.raises(AdapterFailure) as raised:
+        LLMClient(AgentConfig(), ScriptedTransport([HTTPResponse(200, raw)])).complete({})
+    assert raised.value.error.code == "invalid_response"
+
+
 def test_real_stdlib_http_wire_and_redirect_refusal():
     seen = []
     response = completion({"outcome":"authorization_required","claims":[]})

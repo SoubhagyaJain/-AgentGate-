@@ -1,6 +1,6 @@
 # Development progress
 
-Current phase: **Phase 1 — deterministic foundations**.
+Current phase: **Phase 1 — COMPLETED and verified**. Await further authorization.
 
 | Task | Status | Evidence |
 |---|---|---|
@@ -11,8 +11,14 @@ Current phase: **Phase 1 — deterministic foundations**.
 | Fixtures and four authorized tools | COMPLETED | fixtures/loader.py, tools modules, data fixtures; 68 tests passed |
 | HTTP client and bounded runtime | COMPLETED | llm_client.py, agent.py; retries, limits, multi-call order and no replay tested |
 | Structured rendering and trace capture | COMPLETED | answers.py, telemetry; evidence validation, repair, raw outputs and JSON roundtrip tested |
-| Deterministic tests and final verification | NOT STARTED | — |
-| Final handoff | NOT STARTED | — |
+| Single-request CLI | COMPLETED | __main__.py, session.example.json; validation-only and success/error/persistence tests |
+| Deterministic tests and final verification | COMPLETED | 124 tests passed; compileall; sdist/wheel built; isolated wheel import verified; OneDrive trace publication test passed |
+| Final handoff | COMPLETED | README, ARCHITECTURE and continuity documents reconciled with code/test evidence |
 
-Next exact action: finish operational CLI/documentation, broaden edge-case tests, verify wheel install and refresh final memory.
+Next exact action: await explicit authorization for Phase 2. On resumption read
+AGENTS/core documents, inspect Git/source, run the 124-test suite, then implement
+only newly authorized Phase 2 work starting with the scenario schema/dataset.
 Phases 2–7: NOT STARTED and outside current authorization.
+
+Live LLM/GPU checks: UNVERIFIED (not required for Phase 1). No model installed,
+no API credentials used, no evaluator/CI/regression result produced.

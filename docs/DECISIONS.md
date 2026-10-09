@@ -71,3 +71,15 @@ Alternatives: unconstrained prose, hidden scripted fallback, scenario scoring no
 Consequences: later evaluator still checks required tool paths and task expectations.
 Known credential text is redacted in raw responses; Ollama's ignored placeholder is not.
 Modules: answers.py, agent.py, llm_client.py, tests/support.py.
+
+## 009 — Minimal operator CLI and artifact publication (2026-10-09)
+Decision: add one-request CLI and no-network validate-only; trusted session is an
+explicit operator file, safe example unverified/without consent. No evaluator shim.
+Persist unique immutable traces using atomic exclusive same-filesystem hard links.
+Reason: demonstrate the real runtime interface without claiming Phase 2 or live execution.
+Alternatives: Python API only; overwriting reports; bundling a fake evaluate command.
+Consequences: fixture/prompt paths are external repository assets; existing output
+is refused before network. CLI 0=structural completion, 2=incomplete request,
+3=input/artifact failure. Unsupported filesystems fail explicitly; Windows/OneDrive
+publication verified. Runtime traces are in-memory until run completion.
+Modules: __main__.py, telemetry/traces.py, README.md, data/fixtures/session.example.json.
