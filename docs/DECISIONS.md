@@ -83,3 +83,15 @@ is refused before network. CLI 0=structural completion, 2=incomplete request,
 3=input/artifact failure. Unsupported filesystems fail explicitly; Windows/OneDrive
 publication verified. Runtime traces are in-memory until run completion.
 Modules: __main__.py, telemetry/traces.py, README.md, data/fixtures/session.example.json.
+
+## 010 — Publish through a PR against a minimal base (2026-10-09)
+Decision: initialize the empty GitHub main with only a minimal README; publish
+the implementation as phase1-foundations and open PR #1. Connect the otherwise
+unrelated bootstrap history via an explicit ours merge, retaining the full local
+tree and all five original checkpoints. Do not merge the PR.
+Reason: GitHub needs an existing base commit to review the initial implementation.
+Alternatives: publish all code directly to main, or rewrite local checkpoint history.
+Consequences: origin points to SoubhagyaJain/-AgentGate-; main contains no agent code
+until PR approval. Git credential manager push worked; the expired gh CLI credential
+was bypassed using the connected GitHub account to initialize main/create the PR.
+Modules: Git refs/remotes and docs continuity files; source code unchanged.

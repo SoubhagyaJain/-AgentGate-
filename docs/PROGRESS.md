@@ -14,9 +14,9 @@ Current phase: **Phase 1 — COMPLETED and verified**. Await further authorizati
 | Single-request CLI | COMPLETED | __main__.py, session.example.json; validation-only and success/error/persistence tests |
 | Deterministic tests and final verification | COMPLETED | 124 tests passed; compileall; sdist/wheel built; isolated wheel import verified; OneDrive trace publication test passed |
 | Final handoff | COMPLETED | README, ARCHITECTURE and continuity documents reconciled with code/test evidence |
-| Publish Phase 1 pull request | IN PROGRESS | User authorized PR; branch phase1-foundations; origin SoubhagyaJain/-AgentGate-; 124 tests rerun and passed |
+| Publish Phase 1 pull request | COMPLETED | PR #1: https://github.com/SoubhagyaJain/-AgentGate-/pull/1; phase1-foundations into main; 124 tests rerun and passed; original checkpoints preserved |
 
-Next exact action: await explicit authorization for Phase 2. On resumption read
+Next exact action: review open PR #1; await explicit authorization for Phase 2. On resumption read
 AGENTS/core documents, inspect Git/source, run the 124-test suite, then implement
 only newly authorized Phase 2 work starting with the scenario schema/dataset.
 Phases 2–7: NOT STARTED and outside current authorization.
