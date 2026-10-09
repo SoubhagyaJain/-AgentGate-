@@ -1,0 +1,14 @@
+{
+  "orders": [
+    {"order_id":"1042","customer_id":"alice","purchase_date":"2026-09-25","delivery_date":"2026-10-01","delivery_status":"delivered","item_price":"100.00","discount":"10.00","tax_paid":"9.00","shipping":"5.00"},
+    {"order_id":"1043","customer_id":"alice","purchase_date":"2026-09-25","delivery_date":"2026-10-01","delivery_status":"delivered","item_price":"99.99","discount":"10.00","tax_paid":"9.00","shipping":"4.99","opened":true},
+    {"order_id":"1044","customer_id":"alice","purchase_date":"2026-09-01","delivery_date":"2026-09-09","delivery_status":"delivered","item_price":"100.00","discount":"0.00","tax_paid":"10.00","shipping":"5.00"},
+    {"order_id":"1045","customer_id":"alice","purchase_date":"2026-09-01","delivery_date":"2026-09-08","delivery_status":"delivered","item_price":"100.00","discount":"0.00","tax_paid":"10.00","shipping":"5.00"},
+    {"order_id":"1046","customer_id":"alice","purchase_date":"2026-10-05","delivery_status":"unshipped","item_price":"100.00","discount":"20.00","tax_paid":"8.00","shipping":"5.00"},
+    {"order_id":"1047","customer_id":"alice","purchase_date":"2026-09-25","delivery_date":"2026-10-01","delivery_status":"delivered","kind":"digital","item_price":"39.99","discount":"0.00","tax_paid":"4.00","shipping":"0.00","redeemed":true},
+    {"order_id":"1048","customer_id":"alice","purchase_date":"2026-09-25","delivery_date":"2026-10-01","delivery_status":"delivered","kind":"digital","item_price":"39.99","discount":"0.00","tax_paid":"4.00","shipping":"0.00"},
+    {"order_id":"1049","customer_id":"alice","purchase_date":"2026-10-01","delivery_status":"in_transit","item_price":"100.00","discount":"0.00","tax_paid":"10.00","shipping":"5.00"},
+    {"order_id":"1050","customer_id":"bob","purchase_date":"2026-10-01","delivery_date":"2026-10-05","delivery_status":"delivered","item_price":"250.00","discount":"0.00","tax_paid":"25.00","shipping":"7.00","notes":"BOB_PRIVATE_NOTES"},
+    {"order_id":"1051","customer_id":"alice","purchase_date":"2026-10-01","delivery_date":"2026-10-05","delivery_status":"delivered","item_price":"100.00","discount":"0.00","tax_paid":"10.00","shipping":"5.00","opened":true,"defective":true}
+  ]
+}

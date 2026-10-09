@@ -1,0 +1,21 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "agentgate"
+version = "0.1.0"
+description = "Synthetic support-agent foundations for reproducible regression experiments"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = ["pydantic>=2.12,<3"]
+
+[dependency-groups]
+dev = ["pytest>=8.3,<10"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra -p no:cacheprovider"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/agentgate"]
